@@ -3,15 +3,16 @@
 ## Содержание
 
 - [Задача 1](#задача-1)
+- [Задача 2](#задача-2)
 
 ### Задача 1
 
 **Условие:** Найти наиболее часто встречающийся символ в строке
 
-**Решение:** 
+**Решение:** Сложность по времени <code>O(n + k)</code>
 
 ```javascript
-const getMaxCharConcurrency2 = (string) => {
+const getMaxCharConcurrency = (string) => {
   let concurrency = new Map();
 
   for (let i = 0; i < string.length; i++) {
@@ -33,5 +34,33 @@ const getMaxCharConcurrency2 = (string) => {
         resultCount = count;
     }
   }
+};
+```
+### Задача 2
+
+**Условие:** Отсортировать массив квадратов чисел
+
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const getSquareNumbers = (nums) => {
+  const output = [];
+  let left = 0;
+  let right = nums.length - 1;
+
+  for (let i = right; i >= 0; i--) {
+    let currentLeft = Math.pow(nums[left], 2)
+    let currentRight = Math.pow(nums[right], 2)
+
+    if (currentLeft > currentRight) {
+      output[i] = currentLeft;
+      left++
+    } else {
+      output[i] = currentRight;
+      right--;
+    }
+  }
+
+  return output;
 };
 ```
