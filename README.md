@@ -180,9 +180,33 @@ const getShortestWords = (words) => {
 
 **Условие:** Написать функцию сжатия строки. Если на вход пришла пустая строка, сгенерировать ошибку. \
 Пояснения: Если символ встречается 1 раз, он остается без изменений. Если символ встречается более одного раза подряд - перед ним добавляется число с количеством повторений. \
-**Пример:** asssbbh -> a3s2bh\
+**Пример:** <code>getCompressedStr('abbaajjjjl')</code> -> <code>ab2a2j4l</code>\
 **Решение:** Сложность по времени <code>O(n)</code>
 
 ```javascript
 
+const pack = (s, count) => {
+  if (count > 1) {
+    return `${s}${count}`
+  }
+
+  return s;
+}
+
+const getCompressedStr = (s) => {
+  let lastSymbol = s[0];
+  let lastPosition = 0;
+  const result = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== lastSymbol) {
+      result.push(pack(lastSymbol, i - lastPosition));
+      lastPosition = i;
+      lastSymbol = s[i];
+    }
+  }
+  result.push(pack(lastSymbol, s.length - lastPosition));
+
+  return result.join("");
+}
 ```
