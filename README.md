@@ -225,7 +225,7 @@ const getTerms = (nums, x) => {
   for (let num of nums) {
     if (terms.has(x - num)) {
       return [num, x - num];
-  }
+    }
     terms.add(num);
   }
 
