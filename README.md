@@ -292,6 +292,7 @@ const bfRainTerraces(terraces) {
 
   return waterAmount;
 }
+```
 
 ### Задача 12
 
