@@ -2,6 +2,7 @@
 
 ## Содержание
 
+#### Уровень 1
 - [Задача 1](#задача-1)
 - [Задача 2](#задача-2)
 - [Задача 3](#задача-3)
@@ -11,6 +12,12 @@
 - [Задача 7](#задача-7)
 - [Задача 8](#задача-8)
 - [Задача 9](#задача-9)
+- [Задача 10](#задача-10)
+
+#### Уровень 2
+- [Задача 11](#задача-11)
+
+##Уровень 1
 
 ### Задача 1
 
@@ -232,4 +239,56 @@ const getTerms = (nums, x) => {
   return [0, 0];
 };
 ```
+
+### Задача 10
+
+**Условие:** \
+**Пример:** \
+**Решение:** 
+
+	```javascript
+        ///
+	```
+
+##Уровень 2
+
+### Задача 11
+
+**Условие:** Подсчет дождевой воды. \
+**Пример:** <code>bfRainTerraces([2, 4, 1, 4])</code> -> <code>3</code> \
+**Решение:** Сложность по времени <code>O(n^2)</code>
+
+	```javascript
+	const bfRainTerraces(terraces) {
+		let highestBar = 0;
+	  
+	  for (let i = 0; i < terraces.length; i++) {
+	  	if (terraces[i] > terraces[highestBar]) {
+	    	highestBar = i;
+	    }
+	  }
+	  
+	  let waterAmount = 0;
+	  let currentMax = 0;
+	  
+	  for (let k = 0; k < highestBar; k++) {
+	  	if (terraces[k] > currentMax) {
+	    	currentMax = terraces[k];
+	    }
+	    waterAmount += currentMax - terraces[k];
+	  }
+	  
+	  currentMax = 0;
+	  
+	  for (let j = terraces.length - 1; j > highestBar; j--) {
+	  	if (terraces[j] > currentMax) {
+	    	currentMax = terraces[j];
+	    }
+	    waterAmount += currentMax - terraces[j];
+	  }
+	
+	
+	  return waterAmount;
+	}
+	```
 
