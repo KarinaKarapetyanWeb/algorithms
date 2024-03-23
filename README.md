@@ -246,11 +246,13 @@ const getTerms = (nums, x) => {
 **Пример:** \
 **Решение:** 
 
-	```javascript
-        ///
-	```
+```javascript
+ 
+// in progress
 
-##Уровень 2
+```
+
+## Уровень 2
 
 ### Задача 11
 
@@ -258,39 +260,38 @@ const getTerms = (nums, x) => {
 **Пример:** <code>bfRainTerraces([2, 4, 1, 4])</code> -> <code>3</code> \
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
-	```javascript
+```javascript
  
-	const bfRainTerraces(terraces) {
-		let highestBar = 0;
-	  
-	  for (let i = 0; i < terraces.length; i++) {
-	  	if (terraces[i] > terraces[highestBar]) {
-	    	highestBar = i;
-	    }
-	  }
-	  
-	  let waterAmount = 0;
-	  let currentMax = 0;
-	  
-	  for (let k = 0; k < highestBar; k++) {
-	  	if (terraces[k] > currentMax) {
-	    	currentMax = terraces[k];
-	    }
-	    waterAmount += currentMax - terraces[k];
-	  }
-	  
-	  currentMax = 0;
-	  
-	  for (let j = terraces.length - 1; j > highestBar; j--) {
-	  	if (terraces[j] > currentMax) {
-	    	currentMax = terraces[j];
-	    }
-	    waterAmount += currentMax - terraces[j];
-	  }
-	
-	
-	  return waterAmount;
-	}
+const bfRainTerraces(terraces) {
+  let highestBar = 0;
+  
+  for (let i = 0; i < terraces.length; i++) {
+    if (terraces[i] > terraces[highestBar]) {
+	highestBar = i;
+    }
+  }
+  
+  let waterAmount = 0;
+  let currentMax = 0;
+  
+  for (let k = 0; k < highestBar; k++) {
+    if (terraces[k] > currentMax) {
+	currentMax = terraces[k];
+    }
+    waterAmount += currentMax - terraces[k];
+  }
+  
+  currentMax = 0;
+  
+  for (let j = terraces.length - 1; j > highestBar; j--) {
+    if (terraces[j] > currentMax) {
+	currentMax = terraces[j];
+    }
+    waterAmount += currentMax - terraces[j];
+  }
+
+  return waterAmount;
+}
  
-	```
+```
 
