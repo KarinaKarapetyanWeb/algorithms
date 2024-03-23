@@ -261,7 +261,7 @@ const getTerms = (nums, x) => {
 **Пример:** <code>bfRainTerraces([2, 4, 1, 4])</code> -> <code>3</code> \
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
-```javascrip
+```javascript
 const bfRainTerraces = (terraces) => {
   let highestBar = 0;
   
