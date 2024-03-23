@@ -262,7 +262,7 @@ const getTerms = (nums, x) => {
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
 ```javascrip
-const bfRainTerraces(terraces) {
+const bfRainTerraces = (terraces) {
   let highestBar = 0;
   
   for (let i = 0; i < terraces.length; i++) {
@@ -291,7 +291,7 @@ const bfRainTerraces(terraces) {
   }
 
   return waterAmount;
-}
+};
 ```
 
 ### Задача 12
@@ -300,7 +300,7 @@ const bfRainTerraces(terraces) {
 **Пример:** <code>countingSort([0, 3, 5, 2, 4, 5, 2, 3], 0, 5)</code> -> <code>[0, 2, 2, 3, 3, 4, 5, 5]</code> \
 **Решение:** Сложность по времени <code>O(n + k)</code>
 
-```javascrip
+```javascript
 const countingSort = (arr, min, max) => {
   let i = min;
   let j = 0;
@@ -332,7 +332,7 @@ const countingSort = (arr, min, max) => {
 **Пример:** <code>isEqualByMutaion(20213, 12302)</code> -> <code>true</code> \
 **Решение:** Сложность по времени <code>O(log n)</code>
 
-```javascrip
+```javascript
 const countDigits = (num) => {
   const digitCount = new Array(10).fill(0);
 
@@ -353,9 +353,9 @@ const isEqualByMutaion = (x, y) => {
       return false;
     }
   }
-  return true
 
-}
+  return true
+};
 ```
 
 ### Задача 14
@@ -364,7 +364,7 @@ const isEqualByMutaion = (x, y) => {
 **Пример:** <code>groupAnagrams(["cat", "dog", "cash", "good", "bird"])</code> -> <code>[["cat"], ["dog"], ["cash"], ["good"], ["bird"]]</code> \
 **Решение:** Сложность по времени <code>O(n * m log m)</code>
 
-```javascrip
+```javascript
 const groupAnagrams = (strs) => {
   let result = new Map();
   strs.forEach(str => {
