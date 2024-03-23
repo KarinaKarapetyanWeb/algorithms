@@ -17,7 +17,7 @@
 #### Уровень 2
 - [Задача 11](#задача-11)
 
-##Уровень 1
+## Уровень 1
 
 ### Задача 1
 
@@ -259,6 +259,7 @@ const getTerms = (nums, x) => {
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
 	```javascript
+ 
 	const bfRainTerraces(terraces) {
 		let highestBar = 0;
 	  
@@ -290,5 +291,6 @@ const getTerms = (nums, x) => {
 	
 	  return waterAmount;
 	}
+ 
 	```
 
