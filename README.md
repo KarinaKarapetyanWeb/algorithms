@@ -16,6 +16,9 @@
 
 #### Уровень 2
 - [Задача 11](#задача-11)
+- [Задача 12](#задача-12)
+- [Задача 13](#задача-13)
+- [Задача 14](#задача-14)
 
 ## Уровень 1
 
@@ -247,9 +250,7 @@ const getTerms = (nums, x) => {
 **Решение:** 
 
 ```javascript
- 
 // in progress
-
 ```
 
 ## Уровень 2
@@ -260,8 +261,7 @@ const getTerms = (nums, x) => {
 **Пример:** <code>bfRainTerraces([2, 4, 1, 4])</code> -> <code>3</code> \
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
-```javascript
- 
+```javascrip
 const bfRainTerraces(terraces) {
   let highestBar = 0;
   
@@ -292,6 +292,89 @@ const bfRainTerraces(terraces) {
 
   return waterAmount;
 }
- 
+
+### Задача 12
+
+**Условие:** Сортировка подсчетом. \
+**Пример:** <code>countingSort([0, 3, 5, 2, 4, 5, 2, 3], 0, 5)</code> -> <code>[0, 2, 2, 3, 3, 4, 5, 5]</code> \
+**Решение:** Сложность по времени <code>O(n + k)</code>
+
+```javascrip
+const countingSort = (arr, min, max) => {
+  let i = min;
+  let j = 0;
+  let len = arr.length;
+  let count = [];
+
+  for (i; i <= max; i++) {
+    count[i] = 0;
+  }
+
+  for (i = 0; i < len; i++) {
+    count[arr[i]] += 1;
+  }
+
+  for (i = min; i <= max; i++) {
+    while (count[i] > 0) {
+      arr[j] = i;
+      j++;
+      count[i]--;
+    }
+  }
+  return arr;
+};
+```
+
+### Задача 13
+
+**Условие:** Даны два числа, без ведущего нуля, надо сверить будут ли числа равны путем перестановки.\
+**Пример:** <code>isEqualByMutaion(20213, 12302)</code> -> <code>true</code> \
+**Решение:** Сложность по времени <code>O(log n)</code>
+
+```javascrip
+const countDigits = (num) => {
+  const digitCount = new Array(10).fill(0);
+
+  while (num > 0) {
+    lastDigit = num % 10;
+    digitCount[lastDigit] += 1;
+    num = Math.floor(num / 10);
+  }
+  return digitCount;
+};
+
+const isEqualByMutaion = (x, y) => {
+  const digitsX = countDigits(x);
+  const digitsY = countDigits(y);
+
+  for (let i = 0; i < 10; i++) {
+    if (digitsX[i] !== digitsY[i]) {
+      return false;
+    }
+  }
+  return true
+
+}
+```
+
+### Задача 14
+
+**Условие:** Сгруппировать слова по общим буквам.\
+**Пример:** <code>groupAnagrams(["cat", "dog", "cash", "good", "bird"])</code> -> <code>[["cat"], ["dog"], ["cash"], ["good"], ["bird"]]</code> \
+**Решение:** Сложность по времени <code>O(n * m log m)</code>
+
+```javascrip
+const groupAnagrams = (strs) => {
+  let result = new Map();
+  strs.forEach(str => {
+    let sorted = str.split("").sort().join("");
+    if (result.has(sorted)) {
+      result.set(sorted, [...result.get(sorted), str])
+    } else {
+      result.set(sorted, [str])
+    }
+  });
+  return Array.from(result.values());
+};
 ```
 
