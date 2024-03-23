@@ -262,7 +262,7 @@ const getTerms = (nums, x) => {
 **Решение:** Сложность по времени <code>O(n^2)</code>
 
 ```javascrip
-const bfRainTerraces = (terraces) {
+const bfRainTerraces = (terraces) => {
   let highestBar = 0;
   
   for (let i = 0; i < terraces.length; i++) {
