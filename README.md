@@ -19,6 +19,9 @@
 - [Задача 12](#задача-12)
 - [Задача 13](#задача-13)
 - [Задача 14](#задача-14)
+- [Задача 15](#задача-15)
+- [Задача 16](#задача-16)
+- [Задача 17](#задача-17)
 
 ## Уровень 1
 
@@ -379,3 +382,107 @@ const groupAnagrams = (strs) => {
 };
 ```
 
+### Задача 15
+
+**Условие:** Дана отсортированная последовательность чисел длиной N и число K. Необходимо найти количество пар чисел A, B, таких что B - A > K. \
+**Пример:** <code>countPairs([1, 4, 5, 10], 4))</code> -> <code>3</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const countPairs = (array, k) => {
+  let countPairs = 0;
+  let last = 0;
+  
+  for (let first = 0; first < array.length; first++) {
+    while (last < array.length && array[last] - array[first] <= k) {
+    last++;
+  }
+    
+    countPairs += array.length - last;
+  }
+  
+  return countPairs;
+};
+```
+
+### Задача 15
+
+**Условие:** Даны две отсортированные последовательности. Надо их объединить в одну. \
+**Пример:** <code>merge([1, 3], [2, 4, 5])</code> -> <code>[1, 2, 3, 4, 5]</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const merge = (arr1, arr2) => {
+  let pointer1 = 0;
+  let pointer2 = 0;
+  
+  const output = new Array(arr1.length + arr2.length);
+  
+  for (let i = 0; i < arr1.length + arr2.length; i++) {
+    let current1 = arr1[pointer1];
+    let current2 = arr2[pointer2];
+    
+    if (current1 <= current2 || pointer2 >= arr2.length) {
+      output[i] = current1;
+      pointer1++;
+    } else {
+      output[i] = current2;
+      pointer2++;
+    }
+  }
+  
+  return output;
+};
+```
+
+### Задача 16
+
+**Условие:** Дана последовательность чисел. Необходимо посчитать кол-во нулей на полуинтервале (Конечная граница не включена). \
+**Пример:** <code>getZeroesIntervalSum([0, 3, 0, 3, 0, 8, 0, 0], 1, 5)</code> -> <code>2</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const getZeroesIntervalSum = (array, R, K) => {
+  if (R > K || R < 0 || K < 0 || K > array.length) {
+    throw new Error('Invalid interval');
+  }
+  
+  const prefixSum = new Array(array.length + 1).fill(0);
+  
+  for (let i = 1; i <= array.length + 1; i++) {
+    if (array[i - 1] === 0) {
+    	prefixSum[i] = prefixSum[i - 1] + 1;
+    }	else {
+    	prefixSum[i] = prefixSum[i - 1];
+    }
+  }
+  
+  const result = prefixSum[K] - prefixSum[R];
+  
+  return result;
+};
+```
+
+### Задача 17
+
+**Условие:** Дана последовательность чисел. Необходимо посчитать сумму на полуинтервале (Конечная граница не включена). \
+**Пример:** <code>getIntervalSum([1, 3, 5, 3, 7, 8], 1, 4)</code> -> <code>11</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const getIntervalSum = (array, R, K) => {
+  if (R > K || R < 0 || K < 0 || K > array.length) {
+    throw new Error('Invalid interval');
+  }
+
+  const prefixSum = new Array(array.length + 1).fill(0);
+
+  for (let i = 1; i <= array.length + 1; i++) {
+    prefixSum[i] = prefixSum[i - 1] + array[i - 1];
+  }
+
+  const result = prefixSum[K] - prefixSum[R];
+
+  return result;
+};
+```
