@@ -361,7 +361,7 @@ const isEqualByMutaion = (x, y) => {
 ### Задача 14
 
 **Условие:** Сгруппировать слова по общим буквам.\
-**Пример:** <code>groupAnagrams(["cat", "dog", "cash", "good", "bird"])</code> -> <code>[["cat"], ["dog"], ["cash"], ["good"], ["bird"]]</code> \
+**Пример:** <code>groupAnagrams(["cat", "tac", "tca", "dog", "god", "odg"])</code> -> <code>[["cat", "tac", "tca"], ["dog", "god", "odg"]]</code> \
 **Решение:** Сложность по времени <code>O(n * m log m)</code>
 
 ```javascript
