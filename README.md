@@ -22,6 +22,7 @@
 - [Задача 15](#задача-15)
 - [Задача 16](#задача-16)
 - [Задача 17](#задача-17)
+- [Задача 18](#задача-18)
 
 ## Уровень 1
 
@@ -484,5 +485,33 @@ const getIntervalSum = (array, R, K) => {
   const result = prefixSum[K] - prefixSum[R];
 
   return result;
+};
+```
+### Задача 18
+
+**Условие:** Дана последовательность чисел. Необходимо найти кол-во отрезков с нулевой суммой. \
+**Пример:** <code>getZeroSumsIntervals([1, 5, -5, 3])</code> -> <code>1</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const getZeroSumsIntervals = (array) => {
+  const prefixSums = new Map();
+  prefixSums.set(0, 1);
+  
+  let currentSum = 0;
+  let countRanges = 0;
+  
+  for (let element of array) {
+    currentSum += element;
+    
+    if (!prefixSums.has(currentSum)) {
+    	prefixSums.set(currentSum, 0);
+    } else {
+    	prefixSums.set(currentSum, prefixSums.get(currentSum) + 1);
+      countRanges += 1;
+    }
+  }
+  
+  return countRanges;
 };
 ```
