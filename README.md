@@ -505,9 +505,9 @@ const getZeroSumsIntervals = (array) => {
     currentSum += element;
     
     if (!prefixSums.has(currentSum)) {
-    	prefixSums.set(currentSum, 0);
+      prefixSums.set(currentSum, 0);
     } else {
-    	prefixSums.set(currentSum, prefixSums.get(currentSum) + 1);
+      prefixSums.set(currentSum, prefixSums.get(currentSum) + 1);
       countRanges += 1;
     }
   }
