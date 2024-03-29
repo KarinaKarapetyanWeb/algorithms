@@ -23,6 +23,7 @@
 - [Задача 16](#задача-16)
 - [Задача 17](#задача-17)
 - [Задача 18](#задача-18)
+- [Задача 19](#задача-19)
 
 ## Уровень 1
 
@@ -515,3 +516,33 @@ const getZeroSumsIntervals = (array) => {
   return countRanges;
 };
 ```
+
+### Задача 19
+
+**Условие:** Дана последовательность чисел. Какое минимальное количество и каких чисел надо прописать в конец. чтобы последовательность стала симметричной. \
+**Пример:** <code>getSymetricSeq([1, 2, 3, 4, 3])</code> -> <code>[2, 1]</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const isSym = (startEl, endEl) => {
+  return startEl === endEl ? true : false
+};
+
+const getSymetricSeq = (array) => {
+  let start = 0;
+  let counter = 0;
+  let result = [];
+  
+  while (!isSym(array[start], array[array.length - 1])) {
+    start++;
+    counter++;
+  }
+
+  for (let i = counter - 1; i >= 0; i--) {
+    result.push(array[i]);
+  }
+  
+  return result;
+};
+```
+
