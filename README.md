@@ -24,6 +24,7 @@
 - [Задача 17](#задача-17)
 - [Задача 18](#задача-18)
 - [Задача 19](#задача-19)
+- [Задача 20](#задача-20)
 
 ## Уровень 1
 
@@ -543,6 +544,45 @@ const getSymetricSeq = (array) => {
   }
   
   return result;
+};
+```
+
+### Задача 20
+
+**Условие:** Сайт посетило N человек, для каждого известно время входа на сайт In и время выхода Out. Считается, что человек был на сайте с момента In по Out включительно. Определите, какое максимальное количество людей было на сайте одновременно. \
+**Пример:** <code>getMaxOnlineUsers(["a", "b", "c", "d"], [7, 8, 8, 10], [9, 9, 9, 11])</code> -> <code>3</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
+
+```javascript
+const getMaxOnlineUsers = (users, timesIn, timesOut) => {
+  const events = [];
+  
+  for (let i = 0; i < users.length; i++) {
+    events.push([timesIn[i], -1]);
+    events.push([timesOut[i], 1]);
+  }
+  
+  events.sort((event1, event2) => {
+    if (event1[0] !== event2[0]) {
+      return event1[0] - event2[0]
+    } else {
+      return event1[1] - event2[1];
+    }
+  });
+  
+  let online = 0;
+  let maxOnline = 0;
+  
+  for (let event of events) {
+    if (event[1] === -1) {
+      online += 1;
+    } else {
+      online -= 1;
+    }
+    maxOnline = Math.max(online, maxOnline);
+  }
+  
+  return maxOnline;
 };
 ```
 
