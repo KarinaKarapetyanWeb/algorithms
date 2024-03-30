@@ -251,12 +251,31 @@ const getTerms = (nums, x) => {
 
 ### Задача 10
 
-**Условие:** \
-**Пример:** \
-**Решение:** 
+**Условие:** Дана последовательность чисел. Какое минимальное количество и каких чисел надо прописать в конец. чтобы последовательность стала симметричной. \
+**Пример:** <code>getSymetricSeq([1, 2, 3, 4, 3])</code> -> <code>[2, 1]</code> \
+**Решение:** Сложность по времени <code>O(n)</code>
 
 ```javascript
-// in progress
+const isSym = (startEl, endEl) => {
+  return startEl === endEl ? true : false
+};
+
+const getSymetricSeq = (array) => {
+  let start = 0;
+  let counter = 0;
+  let result = [];
+  
+  while (!isSym(array[start], array[array.length - 1])) {
+    start++;
+    counter++;
+  }
+
+  for (let i = counter - 1; i >= 0; i--) {
+    result.push(array[i]);
+  }
+  
+  return result;
+};
 ```
 
 ## Уровень 2
@@ -520,30 +539,41 @@ const getZeroSumsIntervals = (array) => {
 
 ### Задача 19
 
-**Условие:** Дана последовательность чисел. Какое минимальное количество и каких чисел надо прописать в конец. чтобы последовательность стала симметричной. \
-**Пример:** <code>getSymetricSeq([1, 2, 3, 4, 3])</code> -> <code>[2, 1]</code> \
+**Условие:** Сайт посетило N человек, для каждого известно время входа на сайт In и время выхода Out. Считается, что человек был на сайте с момента In по Out включительно. Определите, какое максимальное время на сайте был хотя бв один человек. \
+**Пример:** <code>getMaxUsersTime(["a", "b", "c", "d"], [7, 8, 8, 10], [9, 9, 9, 11])</code> -> <code>3</code> \
 **Решение:** Сложность по времени <code>O(n)</code>
 
 ```javascript
-const isSym = (startEl, endEl) => {
-  return startEl === endEl ? true : false
-};
-
-const getSymetricSeq = (array) => {
-  let start = 0;
-  let counter = 0;
-  let result = [];
+const getMaxUsersTime = (users, timesIn, timesOut) => {
+  const events = [];
   
-  while (!isSym(array[start], array[array.length - 1])) {
-    start++;
-    counter++;
-  }
-
-  for (let i = counter - 1; i >= 0; i--) {
-    result.push(array[i]);
+  for (let i = 0; i < users.length; i++) {
+    events.push([timesIn[i], -1]);
+    events.push([timesOut[i], 1]);
   }
   
-  return result;
+  events.sort((event1, event2) => {
+    if (event1[0] !== event2[0]) {
+      return event1[0] - event2[0]
+    } else {
+      return event1[1] - event2[1];
+    }
+  });
+  
+  let online = 0;
+  let notEmptyTime = 0;
+  
+  for (let i = 0; i < events.length; i++) {
+    if (online > 0) {
+      notEmptyTime += events[i][0] - events[i - 1][0];
+    } if (events[i][1] === -1) {
+      online += 1; 
+    } else {
+      online -= 1; 
+    }
+  }
+  
+  return notEmptyTime;
 };
 ```
 
