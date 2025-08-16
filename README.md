@@ -33,6 +33,7 @@
 **Условие:** Найти наиболее часто встречающийся символ в строке.\
 **Пример:** <code>getMaxCharConcurrency("absjklaaaa")</code> -> <code>a</code>\
 **Решение:** Сложность по времени <code>O(n + k)</code>
+**Метод:** Множество + линейный поиск
 
 ```javascript
 const getMaxCharConcurrency = (string) => {
@@ -238,6 +239,7 @@ const getCompressedStr = (s) => {
 **Условие:** Дана последовательность положительных чисел, длиной N и число X. Нужно найти два различных числа, которые в сумме дадут X или вернуть [0, 0], если их нет. \
 **Пример:** <code>getTerms([3, 4, 7, 9, 10], 7)</code> -> <code>[4, 3]</code>\
 **Решение:** Сложность по времени <code>O(n)</code>
+**Метод:** Множество
 
 ```javascript
 
@@ -363,6 +365,7 @@ const countingSort = (arr, min, max) => {
 **Условие:** Даны два числа, без ведущего нуля, надо сверить будут ли числа равны путем перестановки.\
 **Пример:** <code>isEqualByMutaion(20213, 12302)</code> -> <code>true</code> \
 **Решение:** Сложность по времени <code>O(log n)</code>
+**Метод:** Бинарный поиск
 
 ```javascript
 const countDigits = (num) => {
@@ -395,6 +398,7 @@ const isEqualByMutaion = (x, y) => {
 **Условие:** Сгруппировать слова по общим буквам.\
 **Пример:** <code>groupAnagrams(["cat", "tac", "tca", "dog", "god", "odg"])</code> -> <code>[["cat", "tac", "tca"], ["dog", "god", "odg"]]</code> \
 **Решение:** Сложность по времени <code>O(n * m log m)</code>
+**Метод:** Множество
 
 ```javascript
 const groupAnagrams = (strs) => {
